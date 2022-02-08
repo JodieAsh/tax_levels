@@ -11,34 +11,11 @@
 
 # orgID <- 562 # Escherichia coli - Species 
 e_coli <- readRDS("./jan_data/e_coli_data/e_coli_data.rds")
-e_coli_prot <- e_coli$proteins
-e_coli <- e_coli$df
-e_coli_copy <- e_coli
-
-# Change UID name to Info_protein_id
-library(tidyverse)
-e_coli_prot <- rename(e_coli_prot, Info_protein_id = UID)
-
-new <- merge(e_coli_copy, e_coli_prot[,], by="Info_protein_id")
-
-
-new <- new[new$Info_PepID %!in% unique_id_test_e_coli, ]
-
-
 write.csv(new, "e_coli_prot.csv")
-
 
 e_coli_test <- e_coli[e_coli$Info_split == "split_01_25", ]
 e_coli_train <- e_coli[e_coli$Info_split == "split_02_75", ]
 
-
-# add global features to test set 
-
-
-# library(dplyr)
-# pep <- group_by(e_coli_test, e_coli_test$Info_PepID)
-# tab <- summarise(pep, Class=first(Class))
-# table(tab$Class) 
 
 unique_id_e_coli <- unique(e_coli$Info_PepID)
 unique_id_train_e_coli <- unique(e_coli_train$Info_PepID)
