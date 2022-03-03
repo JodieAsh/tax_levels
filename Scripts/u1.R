@@ -2,12 +2,14 @@
 '%!in%' <- function(x,y)!('%in%'(x,y))
 
 # orgID <- 562 # Escherichia coli - Species 
-e_coli <- readRDS("./jan_data/e_coli_data/e_coli_data.rds")
+e_coli <- readRDS("./Data/jan_data/e_coli_data/e_coli_data.rds")
 e_coli_prot <- e_coli$proteins
 e_coli_df <- e_coli$df
 
 e_coli_test <- e_coli_df[e_coli_df$Info_split == "split_01_25", ]
 e_coli_train <- e_coli_df[e_coli_df$Info_split == "split_02_75", ]
+write.csv(e_coli_test, "e_coli_test.csv")
+write.csv(e_coli_train, "e_coli_train.csv")
 
 unique_id_e_coli <- unique(e_coli_df$Info_PepID)
 unique_id_train_e_coli <- unique(e_coli_train$Info_PepID)
