@@ -27,14 +27,14 @@ for (fn in test_csv_names) {
   path <- paste("./march_2022_data/test_e_coli_csv/", fn, sep="")
   df <- read.csv(path)
   # Rename columns so that they are the same before merge
-  names(df)[names(df) == "Residue_depth"]  <- "Info_residue_depth"
-  names(df)[names(df) == "Ca_depth"]  <- "Info_Ca_depth"
-  names(df)[names(df) == "EXP_HSE_A_U"]  <- "Info_EXP_HSE_A_U"
-  names(df)[names(df) == "EXP_HSE_A_D"]  <- "Info_EXP_HSE_A_D"
-  names(df)[names(df) == "EXP_HSE_B_U"]  <- "Info_EXP_HSE_B_U"
-  names(df)[names(df) == "EXP_HSE_B_D"]  <- "Info_EXP_HSE_B_D"
-  names(df)[names(df) == "EXP_CN"]  <- "Info_EXP_CN"
-  names(df)[names(df) == "Disordered_Res"]  <- "Info_disordered_Res"
+  names(df)[names(df) == "Residue_depth"]  <- "Feat_local_residue_depth"
+  names(df)[names(df) == "Ca_depth"]  <- "Feat_local_Ca_depth"
+  names(df)[names(df) == "EXP_HSE_A_U"]  <- "Feat_local_EXP_HSE_A_U"
+  names(df)[names(df) == "EXP_HSE_A_D"]  <- "Feat_local_EXP_HSE_A_D"
+  names(df)[names(df) == "EXP_HSE_B_U"]  <- "Feat_local_EXP_HSE_B_U"
+  names(df)[names(df) == "EXP_HSE_B_D"]  <- "Feat_local_EXP_HSE_B_D"
+  names(df)[names(df) == "EXP_CN"]  <- "Feat_local_EXP_CN"
+  names(df)[names(df) == "Disordered_Res"]  <- "Feat_local_disordered_Res"
   # Rename columns so that they are the same before merge
   names(df)[names(df) == "resseq"]  <- "Info_pos"
   
@@ -57,8 +57,9 @@ for (fn in test_csv_names) {
     test[right]<- NULL
     colnames(test)[colnames(test) == left] <- i
   }
-  
 
 }
+
+
 
 
