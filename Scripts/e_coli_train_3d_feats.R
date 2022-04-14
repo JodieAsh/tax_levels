@@ -61,5 +61,5 @@ for (fn in train_csv_names) {
 }
 
 
-# write.csv(train, "train_with_3d_feats.csv")
+write.csv(train, "train_e_coli_3d_local_feats.csv")
 

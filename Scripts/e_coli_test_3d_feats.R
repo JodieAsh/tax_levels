@@ -60,6 +60,7 @@ for (fn in test_csv_names) {
 
 }
 
+write.csv(test, "test_e_coli_3d_local_feats.csv")
 
 
 
