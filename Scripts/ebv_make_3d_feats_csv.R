@@ -75,6 +75,10 @@ rm(commonNames, fn, i, left, path, right, split)
 # write.csv(train, "j_train_EBV_with_3d_feats.csv", row.names=FALSE)
 
 
+
+
+rm(df, ebv, ebv_df, ebv_prot, ebv_train, train, train_csv)
+# rm(clean_train_csv_names, missing_train_csv, train_csv_ids, train_ebv_csv_names)
 test_ebv_csv <- ebv_test
 test_csv_names <- list.files("./may_2022/test_EBV_pdb_csv")
 desired_length <- length(test_csv_names)
@@ -88,19 +92,19 @@ for (fn in test_csv_names) {
 }
 rm(i, fn, split, desired_length)
 
-test_csv_ids <- test_e_coli_csv$Info_protein_id
+test_csv_ids <- test_ebv_csv$Info_protein_id
 test_csv_ids <- unique(test_csv_ids)
 missing_test_csv <- setdiff(test_csv_ids, clean_test_csv_names)
 
 # Remove missing proteins from og csv
-test_csv <- test_e_coli_csv[test_e_coli_csv$Info_protein_id %in% clean_test_csv_names, ]
+test_csv <- test_ebv_csv[test_ebv_csv$Info_protein_id %in% clean_test_csv_names, ]
 test <- test_csv
-test <- subset(test, select = -c(X))
-# write.csv(test, "j_test_e_coli.csv", row.names=FALSE)
+# test <- subset(test, select = -c(X))
+# write.csv(test, "j_test_ebv.csv", row.names=FALSE)
 
 # count <- 1
 for (fn in test_csv_names) {
-  path <- paste("./may_2022/test_e_coli_pdb_csv/", fn, sep="")
+  path <- paste("./may_2022/test_EBV_pdb_csv/", fn, sep="")
   df <- read.csv(path)
   # Rename columns so that they are the same before merge
   names(df)[names(df) == "Residue_depth"]  <- "feat_residue_depth"
@@ -136,9 +140,8 @@ for (fn in test_csv_names) {
   
 }
 rm(commonNames, fn, i, left, path, right, split)
+# write.csv(test, "j_test_EBV_with_3d_feats.csv", row.names=FALSE)
 
-
-# write.csv(train, "j_train_EBV_with_3d_feats.csv", row.names=FALSE)
 
 # See what columns are different 
 # v_EBV_diff <- setdiff(names(train), names(train_csv))
